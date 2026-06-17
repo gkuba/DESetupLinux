@@ -1,0 +1,151 @@
+# =============================================================================
+# CoolerControl Configuration - Optimized Fan Curve Edition
+# =============================================================================
+
+[devices]
+132f01071a1e1dae0c553abd04be9c33bf7e4fdc93d0c387bac484038d7bbd74 = "NVIDIA GeForce RTX 4090"
+2a8e8c6dd60352c103e5bacab0ccb718631d8b7ec002213b7440ff9f9f8dce53 = "nvme1"
+0280f15bb4062803de46685e1d7a231b3a1a5e74b1fbb2b639623ab469a075f6 = "Intel(R) Core(TM) i9-14900K"
+f42333b13a2853dfb8e516c576470622e74a4659bfffe7ca229f68733beae979 = "acpitz"
+25b3b1afafbe996a6e8101734151a931e68fc00aaf0685178e30dd7d5c7a2751 = "nvme0"
+33f022b13ddcf5eef2951eec6ee8e408eabdf92b3ae22bbc7d2c06decea183cb = "iwlwifi_1"
+7dfba58d919dce28472c201c33bfa0bf55e3d0195ea8854dc310ff10a370e7cd = "kraken2023"
+4a67f6683dd3d93fc6192a885fbfa040e92a5691cfe3a387fea8ba7cab5e6a63 = "nzxtsmart2"
+19e098e312e1b1b39163a343ea22b6ea17f18ec1a803ffe0ce44f5bacd6076ee = "Custom Sensors"
+524778e4a6e810a8814e6cf90367bc8d5f8faf67bb9e44758f6219d9ea5d76cf = "iwlwifi_1"
+3bc354ad993003c2d24177fcafd6b8277eb5618d748c899295471eae62940be9 = "NZXT RGB & Fan Controller (3+6 channels)"
+11b268277ce357efe95dff5b3a1daebf5ad7353e3a3e45e7819316f5f2b2ead0 = "NZXT Kraken 2023"
+7bfee7e15e0af819a1c74ac2f088d69197bdae5f361d2af4da2960c931be3cc7 = "nct6687"
+
+[legacy690]
+
+[device-settings]
+[device-settings.11b268277ce357efe95dff5b3a1daebf5ad7353e3a3e45e7819316f5f2b2ead0]
+pump = { speed_fixed = 100 }
+fan = { profile_uid = "7b93adc1-8730-4076-9ffd-745e7694ea9a" }
+
+[device-settings.3bc354ad993003c2d24177fcafd6b8277eb5618d748c899295471eae62940be9]
+fan1 = { profile_uid = "7b93adc1-8730-4076-9ffd-745e7694ea9a" }
+
+# ── Profiles & Curves ─────────────────────────────────────────────────────────
+
+[[profiles]]
+uid = "0"
+name = "Unmanaged"
+p_type = "Default"
+function = "0"
+
+[[profiles]]
+uid = "7b93adc1-8730-4076-9ffd-745e7694ea9a"
+name = "Performance Mode"
+p_type = "Graph"
+# Optimized Stepped Curve: [Temp, Fan Speed %]
+speed_profile = [[0.0, 50], [55.0, 60], [60.0, 65], [65.0, 70], [70.0, 76], [75.0, 90], [80.0, 100], [100.0, 100]]
+temp_source = { temp_name = "temp1", device_uid = "0280f15bb4062803de46685e1d7a231b3a1a5e74b1fbb2b639623ab469a075f6" }
+temp_min = 0.0
+temp_max = 100.0
+function_uid = "0"
+offset_profile = []
+
+[[functions]]
+uid = "0"
+name = "Default Function"
+f_type = "Identity"
+
+# ── Daemon Settings ───────────────────────────────────────────────────────────
+
+[settings]
+apply_on_boot = true
+liquidctl_integration = true
+hide_duplicate_devices = true
+no_init = false
+startup_delay = 10
+thinkpad_full_speed = false
+compress_payload = true
+drivetemp_suspend = false
+poll_rate = 1.0
+tls_enabled = true
+allow_unencrypted = false
+sensors_auto_detect = true
+device_listener_enabled = true
+
+# ── Hardware Profile Mapping ───────────────────────────────────────────────────
+
+[settings.0280f15bb4062803de46685e1d7a231b3a1a5e74b1fbb2b639623ab469a075f6]
+name = "Intel(R) Core(TM) i9-14900K"
+disable = false
+
+[settings.0280f15bb4062803de46685e1d7a231b3a1a5e74b1fbb2b639623ab469a075f6.channel_settings]
+temp22 = { label = "CPU Temp Core 20", disabled = true }
+temp47 = { label = "CPU Temp Core 45", disabled = true }
+temp48 = { label = "CPU Temp Core 46", disabled = true }
+temp37 = { label = "CPU Temp Core 35", disabled = true }
+temp36 = { label = "CPU Temp Core 34", disabled = true }
+temp39 = { label = "CPU Temp Core 37", disabled = true }
+temp18 = { label = "CPU Temp Core 16", disabled = true }
+temp38 = { label = "CPU Temp Core 36", disabled = true }
+temp41 = { label = "CPU Temp Core 39", disabled = true }
+temp35 = { label = "CPU Temp Core 33", disabled = true }
+temp44 = { label = "CPU Temp Core 42", disabled = true }
+temp30 = { label = "CPU Temp Core 28", disabled = true }
+temp14 = { label = "CPU Temp Core 12", disabled = true }
+temp26 = { label = "CPU Temp Core 24", disabled = true }
+temp6 = { label = "CPU Temp Core 4", disabled = true }
+temp34 = { label = "CPU Temp Core 32", disabled = true }
+temp40 = { label = "CPU Temp Core 38", disabled = true }
+temp42 = { label = "CPU Temp Core 40", disabled = true }
+temp45 = { label = "CPU Temp Core 43", disabled = true }
+temp49 = { label = "CPU Temp Core 47", disabled = true }
+temp46 = { label = "CPU Temp Core 44", disabled = true }
+temp43 = { label = "CPU Temp Core 41", disabled = true }
+temp2 = { label = "CPU Temp Core 0", disabled = true }
+temp10 = { label = "CPU Temp Core 8", disabled = true }
+
+[settings.132f01071a1e1dae0c553abd04be9c33bf7e4fdc93d0c387bac484038d7bbd74]
+name = "NVIDIA GeForce RTX 4090"
+disable = false
+
+[settings.132f01071a1e1dae0c553abd04be9c33bf7e4fdc93d0c387bac484038d7bbd74.channel_settings]
+[settings.132f01071a1e1dae0c553abd04be9c33bf7e4span178e30dd7d5c7a2751.channel_settings]
+
+[settings.11b268277ce357efe95dff5b3a1daebf5ad7353e3a3e45e7819316f5f2b2ead0]
+name = "NZXT Kraken 2023"
+disable = false
+
+[settings.11b268277ce357efe95dff5b3a1daebf5ad7353e3a3e45e7819316f5f2b2ead0.channel_settings]
+
+[settings.3bc354ad993003c2d24177fcafd6b8277eb5618d748c899295471eae62940be9]
+name = "NZXT RGB & Fan Controller"
+disable = false
+
+[settings.3bc354ad993003c2d24177fcafd6b8277eb5618d748c899295471eae62940be9.channel_settings]
+
+[settings.7bfee7e15e0af819a1c74ac2f088d69197bdae5f361d2af4da2960c931be3cc7]
+name = "nct6687"
+disable = false
+
+[settings.7bfee7e15e0af819a1c74ac2f088d69197bdae5f361d2af4da2960c931be3cc7.channel_settings]
+
+[settings.25b3b1afafbe996a6e8101734151a931e68fc00aaf0685178e30dd7d5c7a2751]
+name = "Samsung SSD 980 PRO 2TB"
+disable = false
+
+[settings.25b3b1afafbe996a6e8101734151a931e68fc00aaf0685178e30dd7d5c7a2751.channel_settings]
+
+[settings.2a8e8c6dd60352c103e5bacab0ccb718631d8b7ec002213b7440ff9f9f8dce53]
+name = "Samsung SSD 970 EVO Plus 2TB"
+disable = false
+
+[settings.2a8e8c6dd60352c103e5bacab0ccb718631d8b7ec002213b7440ff9f9f8dce53.channel_settings]
+
+[settings.f42333b13a2853dfb8e516c576470622e74a4659bfffe7ca229f68733beae979]
+name = "acpitz"
+disable = false
+
+[settings.f42333b13a2853dfb8e516c576470622e74a4659bfffe7ca229f68733beae979.channel_settings]
+
+[settings.524778e4a6e810a8814e6cf90367bc8d5f8faf67bb9e44758f6219d9ea5d76cf]
+name = "iwlwifi_1"
+disable = false
+
+[settings.524778e4a6e810a8814e6cf90367bc8d5f8faf67bb9e44758f6219d9ea5d76cf.channel_settings]
