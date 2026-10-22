@@ -1,0 +1,87 @@
+[bar.default]
+background_opacity = 0.85
+center = [ "group:g1", "weather" ]
+end = [
+    "sysmon",
+    "tray",
+    "notifications",
+    "clipboard",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "battery",
+    "power_profile",
+    "session"
+]
+margin_ends = 0
+position = "bottom"
+scale = 1.25
+start = [ "control-center", "launcher", "taskbar" ]
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    border_width = 1.0
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "clock", "date" ]
+    opacity = 1.0
+    padding = 6.0
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[dock]
+active_monitor_only = true
+icon_size = 34
+launcher_icon = "noctalia"
+launcher_position = "start"
+pinned = [ "com.mitchellh.ghostty" ]
+reserve_space = false
+show_dots = true
+
+[shell]
+polkit_agent = true
+
+    [shell.launcher]
+    app_grid = true
+    default_view = "pinned"
+    pinned = [ "vivaldi-stable" ]
+    width = 560
+
+    [shell.panel]
+    launcher_placement = "attached"
+    open_near_click_launcher = true
+    transparency_mode = "glass"
+
+[theme]
+custom_palette = "Violet-Noir"
+mode = "dark"
+shell_mode = "dark"
+source = "custom"
+
+    [theme.templates]
+    enable_builtin_templates = false
+
+[wallpaper]
+# Replaced with the target user's home directory by Arch-GKuba.
+directory = "@HOME@/Pictures/Wallpapers"
+
+    [wallpaper.automation]
+    enabled = true
+    interval_seconds = 3600
+
+[widget.launcher]
+glyph = "grid-dots"
+
+[widget.taskbar]
+pinned = [ "systemsettings", "org.kde.dolphin", "vivaldi-stable", "com.mitchellh.ghostty" ]
