@@ -64,6 +64,23 @@ setup_wizard_enabled = false
     open_near_click_launcher = true
     transparency_mode = "glass"
 
+    [[shell.session.actions]]
+    action = "lock"
+    command = "qdbus6 org.freedesktop.ScreenSaver /ScreenSaver Lock"
+
+    [[shell.session.actions]]
+    action = "logout"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    command = "qdbus6 org.freedesktop.ScreenSaver /ScreenSaver Lock && sleep 1 && systemctl suspend"
+
+    [[shell.session.actions]]
+    action = "reboot"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+
 [theme]
 custom_palette = "Violet-Noir"
 mode = "dark"
