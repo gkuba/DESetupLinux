@@ -50,7 +50,7 @@ reserve_space = false
 show_dots = true
 
 [shell]
-polkit_agent = true
+polkit_agent = false
 setup_wizard_enabled = false
 
     [shell.launcher]
@@ -60,7 +60,9 @@ setup_wizard_enabled = false
     width = 560
 
     [shell.panel]
+    control_center_placement = "attached"
     launcher_placement = "attached"
+    open_near_click_control_center = true
     open_near_click_launcher = true
     transparency_mode = "glass"
 
