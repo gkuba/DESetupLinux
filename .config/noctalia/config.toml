@@ -51,6 +51,7 @@ show_dots = true
 
 [shell]
 polkit_agent = true
+setup_wizard_enabled = false
 
     [shell.launcher]
     app_grid = true
