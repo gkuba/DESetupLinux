@@ -75,6 +75,7 @@ setup_wizard_enabled = false
 
     [[shell.session.actions]]
     action = "logout"
+    command = "qdbus6 org.kde.Shutdown /Shutdown logout"
 
     [[shell.session.actions]]
     action = "lock_and_suspend"
