@@ -1,5 +1,8 @@
 [bar.default]
-background_opacity = 0.85
+background_opacity = 0.72
+shadow = true
+border = "#30303A"
+border_width = 1.0
 center = [ "group:g1", "weather" ]
 end = [
     "sysmon",
