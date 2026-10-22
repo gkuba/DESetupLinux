@@ -3,7 +3,7 @@ background_opacity = 0.72
 shadow = true
 border = "#30303A"
 border_width = 1.0
-center = [ "group:g1", "weather" ]
+center = [ "group:g1" ]
 end = [
     "sysmon",
     "tray",
@@ -28,7 +28,7 @@ start = [ "control-center", "launcher", "taskbar" ]
     enabled = true
     fill = "surface_variant"
     id = "g1"
-    members = [ "clock", "date" ]
+    members = [ "clock", "date", "weather" ]
     opacity = 1.0
     padding = 6.0
 
