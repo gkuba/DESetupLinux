@@ -9,6 +9,8 @@
 -- XCURSOR variables rather than `hyprctl setcursor` (Hyprcursor only).
 hl.env("XCURSOR_THEME", "Empty-Butterfly-Purple-Hyprland")
 hl.env("XCURSOR_SIZE", "48")
+hl.env("HYPRCURSOR_THEME", "Empty-Butterfly-Purple-Hyprland")
+hl.env("HYPRCURSOR_SIZE", "48")
 hl.env(
   "XCURSOR_PATH",
   os.getenv("HOME") .. "/.local/share/icons:" .. os.getenv("HOME") .. "/.icons:/usr/share/icons"

@@ -9,9 +9,9 @@ Launcher immediately. Any other key pressed while Super is held suppresses the
 launcher, preserving shortcuts such as Super+Q. Super+Enter replaces the Kitty
 terminal shortcut with Ghostty, and Super+X also opens Ghostty.
 
-The Lua module requires Hyprland 0.55 or newer. It sets the XCursor theme and
-size for the Hyprland-specific copy of Empty-Butterfly-Purple, then applies
-Violet-Noir border colors, translucent windows, and blur. It does
+The Lua module requires Hyprland 0.55 or newer. It sets XCursor and Hyprcursor
+theme and size for the Hyprland-specific copy of Empty-Butterfly-Purple, then
+applies Violet-Noir border colors, translucent windows, and blur. It does
 not change window placement, gaps, rounding, animations, workspaces, or
 shortcuts.
 
