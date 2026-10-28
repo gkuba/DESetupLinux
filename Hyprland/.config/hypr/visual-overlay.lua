@@ -4,9 +4,7 @@
 -- below override existing bindings.
 -- Requires Hyprland 0.55+ with Lua configuration enabled.
 
--- Use the bundled XCursor theme for Hyprland and applications inheriting its
--- session environment. It is a legacy XCursor theme, so configure it with
--- XCURSOR variables rather than `hyprctl setcursor` (Hyprcursor only).
+-- Set the requested XCursor and Hyprcursor theme variables for the session.
 hl.env("XCURSOR_THEME", "Empty-Butterfly-Purple-Hyprland")
 hl.env("XCURSOR_SIZE", "48")
 hl.env("HYPRCURSOR_THEME", "Empty-Butterfly-Purple-Hyprland")
@@ -15,6 +13,11 @@ hl.env(
   "XCURSOR_PATH",
   os.getenv("HOME") .. "/.local/share/icons:" .. os.getenv("HOME") .. "/.icons:/usr/share/icons"
 )
+
+-- Re-apply the selected cursor theme after Hyprland initializes its cursor manager.
+hl.on("hyprland.start", function()
+  hl.exec_cmd("hyprctl setcursor Empty-Butterfly-Purple-Hyprland 48")
+end)
 
 -- Open Noctalia only when Super is pressed and released by itself. Track raw
 -- key events so every Super chord (including existing user shortcuts) cancels
