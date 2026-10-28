@@ -1,9 +1,19 @@
-# Hyprland-specific Noctalia visual settings.
-# This file is loaded alongside other *.toml files and does not replace them.
+# Hyprland-specific Noctalia visual settings for the existing main bar.
 
-[bar.default]
+[bar.main]
 thickness = 36
 scale = 1.2
+font_scale = 1.0
+margin_ends = 100
+margin_edge = 0
+margin_opposite_edge = 0
+padding = 14
+radius = 12
+radius_top_left = 24
+radius_top_right = 24
+radius_bottom_left = 12
+radius_bottom_right = 12
+concave_edge_corners = true
 background_opacity = 0.72
 shadow = true
 border = "#30303A"
@@ -12,19 +22,18 @@ color = "#E5E7ED"
 icon_color = "#E5E7ED"
 capsule_fill = "#202229"
 capsule_foreground = "#E5E7ED"
-start = ["control-center", "launcher", "wallpaper", "workspaces", "active_window", "taskbar"]
-center = ["group:g1"]
-end = ["sysmon", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "power_profile", "session"]
+start = ["launcher", "wallpaper", "layout_gap_start", "taskbar", "layout_gap_active", "active_window"]
+center = ["clock", "date", "weather"]
+end = ["workspaces", "layout_gap_end", "sysmon", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "power_profile", "control-center", "session"]
 
-[[bar.default.capsule_group]]
-id = "g1"
-members = ["clock", "date", "weather"]
-enabled = true
-fill = "#202229"
-foreground = "#E5E7ED"
-opacity = 1.0
-padding = 6.0
-border_width = 1.0
+[widget.layout_gap_start]
+type = "spacer"
+
+[widget.layout_gap_active]
+type = "spacer"
+
+[widget.layout_gap_end]
+type = "spacer"
 
 [widget.workspaces]
 capsule = false
