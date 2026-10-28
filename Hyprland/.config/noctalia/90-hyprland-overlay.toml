@@ -1,6 +1,6 @@
-# Hyprland-specific Noctalia visual settings for the existing main bar.
+# Hyprland-specific Noctalia visual settings for the existing default bar.
 
-[bar.main]
+[bar.default]
 thickness = 36
 scale = 1.2
 font_scale = 1.0

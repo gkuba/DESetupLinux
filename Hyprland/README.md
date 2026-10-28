@@ -3,8 +3,9 @@
 These are additive settings for an existing Hyprland Lua setup. The installer
 backs up conflicting files, copies this folder's `.config` contents into the
 user's `.config`, and loads `visual-overlay.lua` from the existing
-`hyprland.lua` entrypoint. It does not replace monitor, environment, keybinding,
-or startup settings.
+`hyprland.lua` entrypoint. It preserves monitor, environment, and startup
+settings, while setting Super to open Noctalia Launcher and replacing the
+Super+Enter Kitty terminal shortcut with Ghostty. Super+X also opens Ghostty.
 
 The Lua module requires Hyprland 0.55 or newer. It selects a Hyprland-specific
 copy of the bundled Empty-Butterfly-Purple XCursor theme after Hyprland starts,
@@ -17,7 +18,7 @@ The Hyprland installer keeps that adjusted cursor copy under
 in `.icons/` remains unchanged for KDE Plasma.
 
 `90-hyprland-overlay.toml` and `palettes/Violet-Noir.json` update the existing
-Noctalia `main` bar in place. It keeps the launcher and wallpaper selector at
+Noctalia `default` bar in place. It keeps the launcher and wallpaper selector at
 the start, clock/date/weather in the center, and the system widgets at the end;
 the Network label is hidden and Workspaces has no capsule. The overlay also
 sets the bar size and shape, applies the Violet-Noir palette, configures hourly

@@ -1,6 +1,7 @@
 -- Arch-GKuba Hyprland visual overlay.
 -- Loaded from the existing hyprland.lua entrypoint; does not replace its
--- monitor, environment, keybinding, or startup configuration.
+-- monitor, environment, or startup configuration. Only the explicit keybinds
+-- below override existing bindings.
 -- Requires Hyprland 0.55+ with Lua configuration enabled.
 
 -- Use the bundled XCursor theme for Hyprland and applications inheriting its
@@ -18,6 +19,23 @@ hl.env(
 hl.on("hyprland.start", function()
   hl.exec_cmd("hyprctl setcursor Empty-Butterfly-Purple-Hyprland 48")
 end)
+
+-- Route the standalone Super key to Noctalia's launcher, and replace the
+-- default Super+Enter terminal binding (Kitty) with Ghostty. Super+X also opens
+-- Ghostty. Unbind these first so they replace existing actions on these keys.
+local noctalia_launcher = hl.dsp.exec_cmd("noctalia msg panel-toggle launcher")
+local open_ghostty = hl.dsp.exec_cmd("ghostty")
+
+hl.unbind("Super_L")
+hl.unbind("Super_R")
+hl.bind("Super_L", noctalia_launcher)
+hl.bind("Super_R", noctalia_launcher)
+
+hl.unbind("SUPER + RETURN")
+hl.bind("SUPER + RETURN", open_ghostty)
+
+hl.unbind("SUPER + X")
+hl.bind("SUPER + X", open_ghostty)
 
 hl.config({
   general = {
