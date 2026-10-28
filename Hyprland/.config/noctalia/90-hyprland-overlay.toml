@@ -1,7 +1,9 @@
 # Hyprland-specific Noctalia visual settings.
 # This file is loaded alongside other *.toml files and does not replace them.
 
-[bar.main]
+[bar.default]
+thickness = 36
+scale = 1.2
 background_opacity = 0.72
 shadow = true
 border = "#30303A"
@@ -10,6 +12,28 @@ color = "#E5E7ED"
 icon_color = "#E5E7ED"
 capsule_fill = "#202229"
 capsule_foreground = "#E5E7ED"
+start = ["control-center", "launcher", "wallpaper", "workspaces", "active_window", "taskbar"]
+center = ["group:g1"]
+end = ["sysmon", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "power_profile", "session"]
+
+[[bar.default.capsule_group]]
+id = "g1"
+members = ["clock", "date", "weather"]
+enabled = true
+fill = "#202229"
+foreground = "#E5E7ED"
+opacity = 1.0
+padding = 6.0
+border_width = 1.0
+
+[widget.workspaces]
+capsule = false
+
+[widget.network]
+show_label = false
+
+[widget.session]
+icon_color = "#72B87A"
 
 [theme]
 source = "custom"

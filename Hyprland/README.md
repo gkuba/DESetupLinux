@@ -16,9 +16,12 @@ The Hyprland installer keeps that adjusted cursor copy under
 `~/.local/share/icons/Empty-Butterfly-Purple-Hyprland`; the shared cursor source
 in `.icons/` remains unchanged for KDE Plasma.
 
-`90-hyprland-overlay.toml` and `palettes/Violet-Noir.json` set the Noctalia bar
-colors, palette, hourly random wallpaper folder, and Greeter appearance
-auto-sync. Bar styling targets the existing `main` bar and leaves its widget
-layout unchanged. GUI-managed values in `~/.local/state/noctalia/settings.toml`
-can override the shell config. The installer supplies the cursor and wallpaper
-assets from the repository's `.icons/` and `Wallpapers/` folders.
+`90-hyprland-overlay.toml` and `palettes/Violet-Noir.json` update the existing
+Noctalia `default` bar, preserving the committed Control Center, launcher,
+taskbar, centered clock/date/weather group, and system widgets. They add the
+wallpaper selector and Workspaces followed by Active Window. They also set the
+palette, configure hourly random wallpapers, and enable Greeter appearance
+auto-sync. GUI-managed values in
+`~/.local/state/noctalia/settings.toml` can override the shell config. The
+installer supplies the cursor and wallpaper assets from the repository's
+`.icons/` and `Wallpapers/` folders.
