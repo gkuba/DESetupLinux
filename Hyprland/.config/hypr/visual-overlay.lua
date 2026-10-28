@@ -6,8 +6,18 @@
 -- Use the bundled XCursor theme for Hyprland and applications inheriting its
 -- session environment. Hyprland falls back to XCursor when no Hyprcursor theme
 -- with this name is installed.
-hl.env("XCURSOR_THEME", "Empty-Butterfly-Purple")
+hl.env("XCURSOR_THEME", "Empty-Butterfly-Purple-Hyprland")
 hl.env("XCURSOR_SIZE", "48")
+hl.env(
+  "XCURSOR_PATH",
+  os.getenv("HOME") .. "/.local/share/icons:" .. os.getenv("HOME") .. "/.icons:/usr/share/icons"
+)
+
+-- Apply the cursor after Hyprland has initialized its cursor manager. Setting
+-- XCURSOR_THEME alone during Lua config loading can be too late for startup.
+hl.on("hyprland.start", function()
+  hl.exec_cmd("hyprctl setcursor Empty-Butterfly-Purple-Hyprland 48")
+end)
 
 hl.config({
   general = {
