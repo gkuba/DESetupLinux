@@ -4,9 +4,10 @@ These are additive settings for an existing Hyprland Lua setup. The installer
 backs up conflicting files, copies this folder's `.config` contents into the
 user's `.config`, and loads `visual-overlay.lua` from the existing
 `hyprland.lua` entrypoint. It preserves monitor, environment, and startup
-settings, while setting Super to open Noctalia Launcher after a 500 ms delay and
-replacing the Super+Enter Kitty terminal shortcut with Ghostty. Super+X also
-opens Ghostty; either terminal shortcut cancels a pending launcher open.
+settings, while setting a standalone Super press/release to open Noctalia
+Launcher after 350 ms. Any other key pressed while Super is held suppresses the
+launcher, preserving shortcuts such as Super+Q. Super+Enter replaces the Kitty
+terminal shortcut with Ghostty, and Super+X also opens Ghostty.
 
 The Lua module requires Hyprland 0.55 or newer. It selects a Hyprland-specific
 copy of the bundled Empty-Butterfly-Purple XCursor theme after Hyprland starts,

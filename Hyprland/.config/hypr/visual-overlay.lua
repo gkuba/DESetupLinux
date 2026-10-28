@@ -20,39 +20,59 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("hyprctl setcursor Empty-Butterfly-Purple-Hyprland 48")
 end)
 
--- Route the standalone Super key to Noctalia's launcher, and replace the
--- default Super+Enter terminal binding (Kitty) with Ghostty. Super+X also opens
--- Ghostty. Unbind these first so they replace existing actions on these keys.
+-- Open Noctalia only when Super is pressed and released by itself. Track raw
+-- key events so every Super chord (including existing user shortcuts) cancels
+-- the launcher. Hyprland reports XKB keycodes; left/right Super are 133/134.
 local noctalia_launcher = hl.dsp.exec_cmd("noctalia msg panel-toggle launcher")
-local open_ghostty = hl.dsp.exec_cmd("ghostty")
+local super_keys_down = {}
+local super_chord_used = false
 local launcher_request = 0
 
-local function schedule_noctalia_launcher()
-  launcher_request = launcher_request + 1
-  local request = launcher_request
-  hl.timer(function()
-    if launcher_request == request then
-      hl.dispatch(noctalia_launcher)
-    end
-  end, { timeout = 500, type = "oneshot" })
-end
-
-local function launch_ghostty()
-  -- A terminal chord pressed during the launcher delay wins.
-  launcher_request = launcher_request + 1
-  hl.dispatch(open_ghostty)
-end
-
+-- Replace any earlier standalone Super launcher binds from the base config.
 hl.unbind("Super_L")
 hl.unbind("Super_R")
-hl.bind("Super_L", schedule_noctalia_launcher)
-hl.bind("Super_R", schedule_noctalia_launcher)
+hl.unbind("SUPER + SUPER_L")
+hl.unbind("SUPER + SUPER_R")
 
+hl.on("input.keyboard.key", function(keycode, _, state)
+  local is_super = keycode == 133 or keycode == 134
+
+  if is_super then
+    if state == 1 then
+      if next(super_keys_down) == nil then
+        super_chord_used = false
+      end
+      super_keys_down[keycode] = true
+      launcher_request = launcher_request + 1
+    elseif state == 0 then
+      super_keys_down[keycode] = nil
+      if next(super_keys_down) == nil then
+        if super_chord_used then
+          super_chord_used = false
+        else
+          launcher_request = launcher_request + 1
+          local request = launcher_request
+          hl.timer(function()
+            if launcher_request == request then
+              hl.dispatch(noctalia_launcher)
+            end
+          end, { timeout = 350, type = "oneshot" })
+        end
+      end
+    end
+  elseif state == 1 and next(super_keys_down) ~= nil then
+    super_chord_used = true
+    launcher_request = launcher_request + 1
+  end
+end)
+
+-- Replace the default Super+Enter terminal binding (Kitty) with Ghostty.
+-- Super+X also opens Ghostty.
+local open_ghostty = hl.dsp.exec_cmd("ghostty")
 hl.unbind("SUPER + RETURN")
-hl.bind("SUPER + RETURN", launch_ghostty)
-
+hl.bind("SUPER + RETURN", open_ghostty)
 hl.unbind("SUPER + X")
-hl.bind("SUPER + X", launch_ghostty)
+hl.bind("SUPER + X", open_ghostty)
 
 hl.config({
   general = {
