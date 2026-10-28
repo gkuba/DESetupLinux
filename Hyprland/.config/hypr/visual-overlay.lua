@@ -25,17 +25,34 @@ end)
 -- Ghostty. Unbind these first so they replace existing actions on these keys.
 local noctalia_launcher = hl.dsp.exec_cmd("noctalia msg panel-toggle launcher")
 local open_ghostty = hl.dsp.exec_cmd("ghostty")
+local launcher_request = 0
+
+local function schedule_noctalia_launcher()
+  launcher_request = launcher_request + 1
+  local request = launcher_request
+  hl.timer(function()
+    if launcher_request == request then
+      hl.dispatch(noctalia_launcher)
+    end
+  end, { timeout = 500, type = "oneshot" })
+end
+
+local function launch_ghostty()
+  -- A terminal chord pressed during the launcher delay wins.
+  launcher_request = launcher_request + 1
+  hl.dispatch(open_ghostty)
+end
 
 hl.unbind("Super_L")
 hl.unbind("Super_R")
-hl.bind("Super_L", noctalia_launcher)
-hl.bind("Super_R", noctalia_launcher)
+hl.bind("Super_L", schedule_noctalia_launcher)
+hl.bind("Super_R", schedule_noctalia_launcher)
 
 hl.unbind("SUPER + RETURN")
-hl.bind("SUPER + RETURN", open_ghostty)
+hl.bind("SUPER + RETURN", launch_ghostty)
 
 hl.unbind("SUPER + X")
-hl.bind("SUPER + X", open_ghostty)
+hl.bind("SUPER + X", launch_ghostty)
 
 hl.config({
   general = {
