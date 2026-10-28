@@ -5,12 +5,12 @@ backs up conflicting files, copies this folder's `.config` contents into the
 user's `.config`, and loads `visual-overlay.lua` from the existing
 `hyprland.lua` entrypoint. It preserves monitor, environment, and startup
 settings, while setting a standalone Super press/release to open Noctalia
-Launcher after 350 ms. Any other key pressed while Super is held suppresses the
+Launcher immediately. Any other key pressed while Super is held suppresses the
 launcher, preserving shortcuts such as Super+Q. Super+Enter replaces the Kitty
 terminal shortcut with Ghostty, and Super+X also opens Ghostty.
 
-The Lua module requires Hyprland 0.55 or newer. It selects a Hyprland-specific
-copy of the bundled Empty-Butterfly-Purple XCursor theme after Hyprland starts,
+The Lua module requires Hyprland 0.55 or newer. It sets XCursor and Hyprcursor
+theme and size variables for the Hyprland-specific copy of Empty-Butterfly-Purple,
 then applies Violet-Noir border colors, translucent windows, and blur. It does
 not change window placement, gaps, rounding, animations, workspaces, or
 shortcuts.

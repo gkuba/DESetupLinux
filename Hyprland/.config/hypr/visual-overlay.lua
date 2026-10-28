@@ -5,20 +5,16 @@
 -- Requires Hyprland 0.55+ with Lua configuration enabled.
 
 -- Use the bundled XCursor theme for Hyprland and applications inheriting its
--- session environment. Hyprland falls back to XCursor when no Hyprcursor theme
--- with this name is installed.
+-- session environment. It is a legacy XCursor theme, so configure it with
+-- XCURSOR variables rather than `hyprctl setcursor` (Hyprcursor only).
 hl.env("XCURSOR_THEME", "Empty-Butterfly-Purple-Hyprland")
 hl.env("XCURSOR_SIZE", "48")
+hl.env("HYPRCURSOR_THEME", "Empty-Butterfly-Purple-Hyprland")
+hl.env("HYPRCURSOR_SIZE", "48")
 hl.env(
   "XCURSOR_PATH",
   os.getenv("HOME") .. "/.local/share/icons:" .. os.getenv("HOME") .. "/.icons:/usr/share/icons"
 )
-
--- Apply the cursor after Hyprland has initialized its cursor manager. Setting
--- XCURSOR_THEME alone during Lua config loading can be too late for startup.
-hl.on("hyprland.start", function()
-  hl.exec_cmd("hyprctl setcursor Empty-Butterfly-Purple-Hyprland 48")
-end)
 
 -- Open Noctalia only when Super is pressed and released by itself. Track raw
 -- key events so every Super chord (including existing user shortcuts) cancels
@@ -26,7 +22,6 @@ end)
 local noctalia_launcher = hl.dsp.exec_cmd("noctalia msg panel-toggle launcher")
 local super_keys_down = {}
 local super_chord_used = false
-local launcher_request = 0
 
 -- Replace any earlier standalone Super launcher binds from the base config.
 hl.unbind("Super_L")
@@ -43,26 +38,18 @@ hl.on("input.keyboard.key", function(keycode, _, state)
         super_chord_used = false
       end
       super_keys_down[keycode] = true
-      launcher_request = launcher_request + 1
     elseif state == 0 then
       super_keys_down[keycode] = nil
       if next(super_keys_down) == nil then
         if super_chord_used then
           super_chord_used = false
         else
-          launcher_request = launcher_request + 1
-          local request = launcher_request
-          hl.timer(function()
-            if launcher_request == request then
-              hl.dispatch(noctalia_launcher)
-            end
-          end, { timeout = 350, type = "oneshot" })
+          hl.dispatch(noctalia_launcher)
         end
       end
     end
   elseif state == 1 and next(super_keys_down) ~= nil then
     super_chord_used = true
-    launcher_request = launcher_request + 1
   end
 end)
 
