@@ -5,9 +5,12 @@
 position = "top"
 scale = 1.0
 background_opacity = 0.72
+color = "on_surface"
 shadow = true
 border = "#30303A"
 border_width = 1.0
+capsule_fill = "surface_container"
+capsule_foreground = "on_surface"
 start = ["workspaces", "active_window"]
 center = ["group:g1"]
 end = ["media", "sysmon", "tray", "notifications", "volume", "control-center"]
@@ -16,7 +19,8 @@ end = ["media", "sysmon", "tray", "notifications", "volume", "control-center"]
     id = "g1"
     members = ["clock", "date"]
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
+    foreground = "on_surface"
     opacity = 1.0
     padding = 5.0
     border_width = 1.0
@@ -34,3 +38,16 @@ source = "custom"
 custom_palette = "Violet-Noir"
 mode = "dark"
 shell_mode = "dark"
+
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+fill_mode = "crop"
+
+[wallpaper.automation]
+enabled = true
+interval_seconds = 3600
+order = "random"
+recursive = true
+
+[shell.greeter_sync]
+auto_sync = true
