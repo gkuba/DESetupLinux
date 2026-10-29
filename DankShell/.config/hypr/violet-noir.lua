@@ -17,13 +17,12 @@ hl.config({
     },
   },
   decoration = {
-    active_opacity = 0.96,
-    inactive_opacity = 0.92,
+    -- Window opacity and blur strength stay with Dank Shell's Settings
+    -- (hyprlandWindowOpacity, blurStrength). Dank Shell's Xray toggle covers
+    -- only its own layers, so blur app windows against the wallpaper here.
     blur = {
       enabled = true,
-      size = 6,
-      passes = 2,
-      new_optimizations = true,
+      xray = true,
     },
   },
 })

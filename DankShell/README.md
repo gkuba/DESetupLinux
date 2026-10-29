@@ -11,14 +11,16 @@ these files:
   `customThemeFile`). Dank Shell derives the bar, popouts, Hyprland border,
   Ghostty and GTK colors from it.
 - `.config/hypr/violet-noir.lua` adds only what the theme cannot express: the
-  purple-to-blue gradient active border, the dim inactive border, window
-  opacity, and blur. It is loaded with `require("violet-noir")` at the end of
+  purple-to-blue gradient active border, the dim inactive border, and xray
+  blur for app windows (they blur the wallpaper, not the windows beneath;
+  Dank Shell's own Xray toggle covers only its bar and popups). Window opacity
+  and blur strength are left to Dank Shell's Settings. It is loaded with `require("violet-noir")` at the end of
   `~/.config/hypr/hyprland.lua`, after the `dms.*` fragments, so it wins over
   the generated colors. It sets no keybinds, cursor, or wallpaper.
 
 The installer also sets, through Dank Shell's own settings:
 
-- the Empty-Butterfly-Purple cursor at 48px (`cursorSettings` in
+- the Empty-Butterfly-Purple cursor at 32px (`cursorSettings` in
   `settings.json`), taken from the repository's `.icons/` folder;
 - a random wallpaper from `~/Pictures/Wallpapers` (the repository's
   `Wallpapers/` folder, without `Archive/`) for each monitor, rotating in
