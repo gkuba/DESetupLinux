@@ -21,13 +21,14 @@ these files:
   loaded with `require("violet-noir")` at the end of
   `~/.config/hypr/hyprland.lua`, after the `dms.*` fragments, so it wins over
   the generated colors. It sets no keybinds, cursor, or wallpaper.
-- `.config/hypr/discord-ptt.lua` makes the forward mouse button (Mouse5)
-  hold F14 in Discord with Hyprland's `send_key_state` dispatcher (down on
-  press, up on release), so push-to-talk works whichever window is focused;
-  Discord does not record mouse buttons as keybinds. The button is consumed,
-  so browsers do not also go forward. It is loaded with
-  `require("discord-ptt")` after `violet-noir`. Set push-to-talk in Discord
-  by clicking the keybind and pressing the forward button, which records F14.
+- `.config/hypr/discord-ptt.lua` passes the side mouse buttons (Mouse4,
+  Mouse5) to Discord with Hyprland's `pass` dispatcher, press and release,
+  so push-to-talk works whichever window is focused, with Discord running
+  natively on Wayland. A passed mouse button stays held because only pointer
+  focus moves; a passed or sent key does not (Hyprland returns keyboard
+  focus right after the press, which releases it), so keys such as F14 are
+  not used. The binds are non-consuming, so the focused app still gets the
+  click. It is loaded with `require("discord-ptt")` after `violet-noir`.
 
 The installer also sets, through Dank Shell's own settings:
 
