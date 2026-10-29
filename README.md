@@ -10,6 +10,12 @@ This repository contains desktop assets and configuration files used by the
   are selected.
 - `coolercontrol/config.toml` is the CoolerControl profile fetched by the
   optional CoolerControl setup.
+- `DankShell/` contains the Violet-Noir Dank Shell theme and the Hyprland
+  border, opacity and blur settings applied after Dank Shell is installed. See
+  [DankShell/README.md](DankShell/README.md).
+
+The cursor themes inherit from `hicolor`; earlier copies inherited from
+themselves, which some compositors could not resolve.
 
 This repository is an asset source; installation and configuration are handled
 by Arch-GKuba.

@@ -1,0 +1,33 @@
+{
+  "name": "Violet-Noir",
+  "primary": "#8050D4",
+  "primaryText": "#FFFFFF",
+  "primaryContainer": "#342064",
+  "secondary": "#5377CC",
+  "surfaceTint": "#8050D4",
+  "surface": "#0B0C10",
+  "surfaceText": "#E5E7ED",
+  "surfaceVariant": "#202229",
+  "surfaceVariantText": "#B9BDC8",
+  "surfaceContainerLowest": "#08090C",
+  "surfaceContainerLow": "#101116",
+  "surfaceContainer": "#14161B",
+  "surfaceContainerHigh": "#1A1C22",
+  "surfaceContainerHighest": "#202229",
+  "background": "#08090C",
+  "backgroundText": "#E5E7ED",
+  "outline": "#30323A",
+  "error": "#C46B79",
+  "warning": "#C4A77D",
+  "info": "#6AABB6",
+  "accents": {
+    "red": "#C46B79",
+    "orange": "#D9BC95",
+    "yellow": "#C4A77D",
+    "green": "#83A894",
+    "teal": "#6AABB6",
+    "blue": "#5377CC",
+    "purple": "#8050D4",
+    "pink": "#A283E6"
+  }
+}
