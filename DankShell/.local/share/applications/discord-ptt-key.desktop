@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Discord Push-to-Talk Key
+Comment=Assign F14 as Discord's push-to-talk key: click the keybind before the countdown ends
+Exec=@BIN@/discord-ptt-key
+Icon=discord
+Terminal=false
+Categories=Utility;
+Keywords=discord;ptt;push;talk;f14;keybind;

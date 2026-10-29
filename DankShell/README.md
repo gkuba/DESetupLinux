@@ -28,8 +28,17 @@ these files:
   Wayland. The bind is non-consuming, so the focused app still gets the
   click. It is loaded with `require("discord-ptt")` after `violet-noir`.
   In Discord, set Input Mode to Push to Talk and give it a keyboard key (any
-  key; F13 avoids conflicts). Without a key Discord does not register the
-  shortcut; `hyprctl globalshortcuts` shows whether it did.
+  key). Without a key Discord does not register the shortcut;
+  `hyprctl globalshortcuts` shows whether it did, and the portal it needs is
+  `xdg-desktop-portal-hyprland`. F14 avoids conflicts since no keyboard has
+  it; to assign it, run `discord-ptt-key` (below) and click Discord's
+  push-to-talk keybind before its countdown ends (Discord shows it as UNK192).
+- `.local/bin/discord-ptt-key` sends F14 to Discord after a countdown shown
+  as a Hyprland notification (5 seconds, or `discord-ptt-key <seconds>`). It
+  sends `code:192`, evdev `KEY_F14`, since common layouts give that key no
+  F14 keysym. `.local/share/applications/discord-ptt-key.desktop` lists it
+  in the launcher as "Discord Push-to-Talk Key"; the installer fills in the
+  script's full path (`@BIN@`).
 
 The installer also sets, through Dank Shell's own settings:
 

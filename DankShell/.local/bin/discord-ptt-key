@@ -1,0 +1,20 @@
+#!/bin/sh
+# Assigns F14 as Discord's push-to-talk key, for keyboards without F14.
+# Start it, then click Discord's push-to-talk keybind before the countdown
+# ends; Discord records the key as UNK192. The forward mouse button then
+# triggers push-to-talk through Discord's global shortcut (discord-ptt.lua).
+# code:192 is evdev KEY_F14; common layouts give it no F14 keysym.
+# Usage: discord-ptt-key [seconds]   (default 5)
+
+delay=${1:-5}
+case $delay in ''|*[!0-9]*) echo "usage: ${0##*/} [seconds]" >&2; exit 2 ;; esac
+command -v hyprctl >/dev/null 2>&1 || { echo 'hyprctl not found; run this inside Hyprland.' >&2; exit 1; }
+
+hyprctl notify 1 "$((delay * 1000))" 0 "Click Discord's push-to-talk keybind now; F14 is sent in $delay s." >/dev/null
+sleep "$delay"
+if hyprctl dispatch 'hl.dsp.send_shortcut({ mods = "", key = "code:192", window = "class:^(discord)$" })' >/dev/null; then
+  hyprctl notify 5 4000 0 'Sent F14 to Discord; it shows as UNK192.' >/dev/null
+else
+  hyprctl notify 3 6000 0 'Could not send F14; is Discord open?' >/dev/null
+  exit 1
+fi

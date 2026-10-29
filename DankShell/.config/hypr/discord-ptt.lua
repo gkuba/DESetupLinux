@@ -8,5 +8,8 @@
 -- Discord running natively on Wayland. non_consuming keeps the button
 -- working in the focused app too.
 -- Check the registration with: hyprctl globalshortcuts
+-- To assign F14, which no keyboard has, run discord-ptt-key (or "Discord
+-- Push-to-Talk Key" in the launcher) and click Discord's push-to-talk
+-- keybind before its countdown ends; Discord shows it as UNK192.
 
 hl.bind("mouse:276", hl.dsp.global("discord:discord-push-to-talk"), { non_consuming = true }) -- forward, Mouse5
