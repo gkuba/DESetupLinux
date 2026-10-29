@@ -1,10 +1,12 @@
 -- Arch-GKuba push-to-talk for Discord under Hyprland with Dank Shell.
 -- Loaded from ~/.config/hypr/hyprland.lua with require("discord-ptt").
--- Wayland apps only see input while focused; pass forwards both the press
--- and the release of a side mouse button to Discord, so push-to-talk works
--- with any window focused. non_consuming keeps the button working in the
--- focused app too (back and forward in a browser).
--- Set the push-to-talk key in Discord by pressing the button there.
+-- Discord registers push-to-talk as a global shortcut
+-- (discord:discord-push-to-talk) once its push-to-talk has a keyboard key
+-- assigned; the key itself does not matter (F13 avoids conflicts). The
+-- global dispatcher sends the press and the release, so the forward mouse
+-- button (Mouse5) holds push-to-talk whichever window is focused, with
+-- Discord running natively on Wayland. non_consuming keeps the button
+-- working in the focused app too.
+-- Check the registration with: hyprctl globalshortcuts
 
-hl.bind("mouse:275", hl.dsp.pass({ window = "class:^(discord)$" }), { non_consuming = true }) -- back, Mouse4
-hl.bind("mouse:276", hl.dsp.pass({ window = "class:^(discord)$" }), { non_consuming = true }) -- forward, Mouse5
+hl.bind("mouse:276", hl.dsp.global("discord:discord-push-to-talk"), { non_consuming = true }) -- forward, Mouse5
