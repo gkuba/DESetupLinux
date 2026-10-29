@@ -5,6 +5,14 @@
 -- only adds what a Dank Shell theme cannot express.
 -- Requires Hyprland 0.55+ with Lua configuration enabled.
 
+-- Qt apps (Dolphin among them) take Dank Shell's matugen colors through the
+-- qtengine platform theme (AUR) instead of the gtk3 passthrough. The
+-- _QT6 variable is set too, since it wins over the plain one in Qt 6.
+-- Hyprland exports both to the systemd session, so Dank Shell and the apps
+-- it launches see them as well.
+hl.env("QT_QPA_PLATFORMTHEME", "qtengine")
+hl.env("QT_QPA_PLATFORMTHEME_QT6", "qtengine")
+
 hl.config({
   general = {
     col = {

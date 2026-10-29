@@ -12,7 +12,7 @@ This repository contains desktop assets and configuration files used by the
   optional CoolerControl setup.
 - `DankShell/` contains the Violet-Noir Dank Shell theme and the Hyprland
   border, opacity and xray blur settings plus Discord push-to-talk on the
-  side mouse buttons, applied after Dank Shell is installed. See
+  forward mouse button (as F14), applied after Dank Shell is installed. See
   [DankShell/README.md](DankShell/README.md).
 
 The cursor themes inherit from `hicolor`; earlier copies inherited from

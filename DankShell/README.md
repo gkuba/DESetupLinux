@@ -15,15 +15,19 @@ these files:
   windows (90% focused, 82% unfocused) and xray blur, so windows blur the
   wallpaper rather than the windows beneath. These override Dank Shell's
   Window opacity slider; Dank Shell's own Xray toggle covers only its bar and
-  popups, and the installer turns it on. It is loaded with `require("violet-noir")` at the end of
+  popups, and the installer turns it on. It also selects the qtengine Qt
+  platform theme (`QT_QPA_PLATFORMTHEME` and `_QT6`), so Qt apps such as
+  Dolphin take Dank Shell's matugen colors; qtengine comes from the AUR. It is
+  loaded with `require("violet-noir")` at the end of
   `~/.config/hypr/hyprland.lua`, after the `dms.*` fragments, so it wins over
   the generated colors. It sets no keybinds, cursor, or wallpaper.
-- `.config/hypr/discord-ptt.lua` passes the side mouse buttons (Mouse4,
-  Mouse5) to Discord with Hyprland's `pass` dispatcher, press and release,
-  so push-to-talk works whichever window is focused. The binds are
-  non-consuming, so the focused app still gets the click. It is loaded with
+- `.config/hypr/discord-ptt.lua` makes the forward mouse button (Mouse5)
+  hold F14 in Discord with Hyprland's `send_key_state` dispatcher (down on
+  press, up on release), so push-to-talk works whichever window is focused;
+  Discord does not record mouse buttons as keybinds. The button is consumed,
+  so browsers do not also go forward. It is loaded with
   `require("discord-ptt")` after `violet-noir`. Set push-to-talk in Discord
-  by pressing the button there.
+  by clicking the keybind and pressing the forward button, which records F14.
 
 The installer also sets, through Dank Shell's own settings:
 
