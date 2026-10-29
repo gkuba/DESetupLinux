@@ -18,6 +18,12 @@ these files:
   popups, and the installer turns it on. It is loaded with `require("violet-noir")` at the end of
   `~/.config/hypr/hyprland.lua`, after the `dms.*` fragments, so it wins over
   the generated colors. It sets no keybinds, cursor, or wallpaper.
+- `.config/hypr/discord-ptt.lua` passes the side mouse buttons (Mouse4,
+  Mouse5) to Discord with Hyprland's `pass` dispatcher, press and release,
+  so push-to-talk works whichever window is focused. The binds are
+  non-consuming, so the focused app still gets the click. It is loaded with
+  `require("discord-ptt")` after `violet-noir`. Set push-to-talk in Discord
+  by pressing the button there.
 
 The installer also sets, through Dank Shell's own settings:
 
